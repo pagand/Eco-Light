@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Fri Jul  2 12:04:07 2021 by Eclipse SUMO netconvert Version 1.9.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <node-files value="single-intersection.nod.xml"/>
+        <edge-files value="single-intersection.edg.xml"/>
+    </input>
+
+    <output>
+        <output-file value="single-intersection.net.xml"/>
+        <plain-output-prefix value="true"/>
+    </output>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<edges version="1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/edges_file.xsd">
+    <edge id="n_t" from="n" to="t" priority="-1" numLanes="2" speed="13.89"/>
+    <edge id="t_e" from="t" to="e" priority="-1" numLanes="2" speed="13.89"/>
+    <edge id="t_s" from="t" to="s" priority="-1" numLanes="2" speed="13.89"/>
+    <edge id="w_t" from="w" to="t" priority="-1" numLanes="2" speed="13.89"/>
+</edges>

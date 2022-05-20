@@ -1,0 +1,56 @@
+<routes>
+    <route id="route_ns" edges="n_t t_s"/>
+    <route id="route_we" edges="w_t t_e"/>
+    <vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
+    <vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
+    <vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
+    <vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--HBEFA3/Bus-->
+
+    <flow id="flow_nsc" route="route_ns" type="car" begin="0" end="10200" period="7" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_wec" route="route_we" type="car" begin="0" end="10000" period="23" departSpeed="max" departPos="base" departLane="best"/>
+
+    <flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
+
+
+    <vehicle id="0" type="car" route="route_ns" depart="10000" color="1,0,0"/>
+    <vehicle id="1" type="car" route="route_ns" depart="10001" color="1,0,0"/>
+    <vehicle id="2" type="car" route="route_ns" depart="10020" color="1,0,0"/>
+    <vehicle id="3" type="car" route="route_we" depart="10040" color="1,0,0"/>
+    <vehicle id="4" type="car" route="route_ns" depart="10050" color="1,0,0"/>
+    <vehicle id="5" type="car" route="route_ns" depart="10051" color="1,0,0"/>
+    <vehicle id="6" type="car" route="route_we" depart="10070" color="1,0,0"/>
+    <vehicle id="7" type="car" route="route_ns" depart="10150" color="1,0,0"/>
+    <vehicle id="8" type="car" route="route_ns" depart="10160" color="1,0,0"/>
+    <vehicle id="9" type="car" route="route_ns" depart="10161" color="1,0,0"/>
+    <vehicle id="10" type="car" route="route_ns" depart="10170" color="1,0,0"/>
+    <vehicle id="11" type="truck" route="route_we" depart="10170" color="0,1,0"/>
+    <vehicle id="111" type="truck" route="route_we" depart="10171" color="0,1,0"/>
+    <vehicle id="12" type="car" route="route_ns" depart="10180" color="1,0,0"/>
+    <vehicle id="13" type="car" route="route_ns" depart="10200" color="1,0,0"/>
+    <vehicle id="14" type="car" route="route_ns" depart="10210" color="1,0,0"/>
+    <vehicle id="15" type="car" route="route_ns" depart="10220" color="1,0,0"/>
+    <vehicle id="16" type="car" route="route_we" depart="10240" color="1,0,0"/>
+    <vehicle id="17" type="car" route="route_ns" depart="10250" color="1,0,0"/>
+    <vehicle id="18" type="car" route="route_we" depart="10250" color="1,0,0"/>
+    <vehicle id="19" type="car" route="route_ns" depart="10260" color="1,0,0"/>
+    <vehicle id="20" type="car" route="route_ns" depart="10261" color="1,0,0"/>
+    <vehicle id="21" type="car" route="route_we" depart="10270" color="1,0,0"/>
+    <vehicle id="22" type="car" route="route_ns" depart="10280" color="1,0,0"/>
+    <vehicle id="23" type="car" route="route_ns" depart="10290" color="1,0,0"/>
+    <vehicle id="24" type="car" route="route_we" depart="10300" color="1,0,0"/>
+    <vehicle id="25" type="car" route="route_we" depart="10301" color="1,0,0"/>
+    <vehicle id="26" type="car" route="route_we" depart="10310" color="1,0,0"/>
+    <vehicle id="27" type="car" route="route_we" depart="10320" color="1,0,0"/>
+    <vehicle id="28" type="car" route="route_ns" depart="10320" color="1,0,0"/>
+    <vehicle id="29" type="car" route="route_we" depart="10330" color="1,0,0"/>
+    <vehicle id="30" type="car" route="route_we" depart="10350" color="1,0,0"/>
+    <vehicle id="31" type="truck" route="route_ns" depart="10360" color="0,1,0"/>
+    <vehicle id="32" type="car" route="route_we" depart="10360" color="1,0,0"/>
+    <vehicle id="33" type="car" route="route_we" depart="10361" color="1,0,0"/>
+    <vehicle id="331" type="truck" route="route_ns" depart="10370" color="0,1,0"/>
+    <vehicle id="34" type="car" route="route_we" depart="10370" color="1,0,0"/>
+    <vehicle id="35" type="car" route="route_we" depart="10380" color="1,0,0"/>
+    <vehicle id="37" type="truck" route="route_ns" depart="10400" color="0,1,0"/>
+    <vehicle id="38" type="truck" route="route_we" depart="10503" color="0,1,0"/>
+</routes>

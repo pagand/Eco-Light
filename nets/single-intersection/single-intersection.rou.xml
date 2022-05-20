@@ -1,0 +1,13 @@
+<routes>
+    <route id="route_ns" edges="n_t t_s"/>
+    <route id="route_we" edges="w_t t_e"/>
+    <vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
+    <vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
+    <vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
+    <vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--HBEFA3/Bus-->
+    <flow id="flow_nsc" route="route_ns" type="car" begin="0" end="100000" probability="0.1" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
+
+</routes>

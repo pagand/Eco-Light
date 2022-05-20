@@ -1,0 +1,47 @@
+<routes>
+    <route id="route_ns" edges="n_t t_s"/>
+    <route id="route_nw" edges="n_t t_w"/>
+    <route id="route_ne" edges="n_t t_e"/>
+    <route id="route_we" edges="w_t t_e"/>
+    <route id="route_wn" edges="w_t t_n"/>
+    <route id="route_ws" edges="w_t t_s"/>
+    <route id="route_ew" edges="e_t t_w"/>
+    <route id="route_en" edges="e_t t_n"/>
+    <route id="route_es" edges="e_t t_s"/>
+    <route id="route_sn" edges="s_t t_n"/>
+    <route id="route_se" edges="s_t t_e"/>
+    <route id="route_sw" edges="s_t t_w"/>
+
+
+    <!--add by me-->
+    <vType id="ltruck" emissionClass="HBEFA3/LDV" color="1,0,0" accel="0.8" decel="4.5"/>  <!--light truck-->
+    <vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
+    <vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
+    <vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--car-->
+
+    <flow id="flow_ns0" route="route_ns" begin="0" end="1000" vehsPerHour="250" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_we0" route="route_we" begin="0" end="1000" type="truck" period="15" departSpeed="max" departPos="base" departLane="best"/>
+
+
+    <flow id="flow_ns" route="route_ns" begin="1000" end="5000" vehsPerHour="100" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_ne" route="route_ne" begin="1000" end="5000" vehsPerHour="70" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_sw" route="route_sw" begin="1000" end="5000" vehsPerHour="20" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_sn" route="route_sn" begin="1000" end="5000" vehsPerHour="100" departSpeed="max" departPos="base" departLane="best"/>
+
+
+   <!--add by me-->
+    <flow id="flow_sw5" route="route_sw" begin="1500" end="5000" type="truck" period="57" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_es5" route="route_es" begin="1500" end="5000" type="bus" period="71" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_we5" route="route_we" begin="1500" end="5000" type="truck" period="47" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_nw5" route="route_nw" begin="1500" end="5000" type="ltruck" period="81" departSpeed="max" departPos="base" departLane="best"/>
+
+    <flow id="flow_ew" route="route_ew" begin="2000" end="5000" vehsPerHour="50" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_es" route="route_es" begin="2000" end="5000" vehsPerHour="20" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_wn" route="route_wn" begin="2000" end="5000" vehsPerHour="20" departSpeed="max" departPos="base" departLane="best"/>
+    <flow id="flow_we" route="route_we" begin="2000" end="5000" vehsPerHour="50" departSpeed="max" departPos="base" departLane="best"/>
+
+
+
+
+
+</routes>
