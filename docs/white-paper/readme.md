@@ -34,8 +34,7 @@ Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 14.     env.render()
 15.     if done:
 16.       obs = env.reset()
-17. 
- env.close()
+17. env.close()
 ```
 
 Get the current emission: this is the api from Traci:
