@@ -17,7 +17,7 @@ Stable Baselines3 (SB3) is a set of reliable implementations of reinforcement le
 Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 
 
-
+```
 1. import gym
 2. 
 3. from stable_baselines3 import PPO
@@ -35,7 +35,8 @@ Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 15.     if done:
 16.       obs = env.reset()
 17. 
-18. env.close()
+ env.close()
+```
 
 Get the current emission: this is the api from Traci:
 
