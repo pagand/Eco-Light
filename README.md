@@ -57,7 +57,7 @@ python3 run[...].py
 
 
 
-## Examples
+## General Examples (SumoRL)
 
 Check [experiments](/experiments) to see how to instantiate a SumoEnvironment and use it with your RL algorithm.
 
@@ -66,30 +66,157 @@ Check [experiments](/experiments) to see how to instantiate a SumoEnvironment an
 python3 experiments/ql_single-intersection.py 
 ```
 
-### [RLlib A3C](https://github.com/ray-project/ray/tree/master/python/ray/rllib/agents/a3c) multiagent in a 4x4 grid:
+### [RLlib A3C](/experiments/a3c_4x4grid.py) multiagent in a 4x4 grid:
 ```
 python3 experiments/a3c_4x4grid.py
 ```
 
-### [stable-baselines3 DQN](https://github.com/DLR-RM/stable-baselines3/blob/master/stable_baselines3/dqn/dqn.py) in a 2-way single intersection:
+### [stable-baselines3 DQN](/experiments/dqn_2way-single-intersection.py) in a 2-way single intersection:
 ```
 python3 experiments/dqn_2way-single-intersection.py
 ```
 
-### Plotting results:
+## CO2 optimzed Examples (Eco-Light)
+prioritzed road users with reward shaping scheme
+
+### [Q-learning](/run1_single-intersection.py) in a one-way single intersection:
 ```
-python3 outputs/plot.py -f outputs/2way-single-intersection/a3c 
+python3 run1_single-intersection.py
 ```
-![alt text](outputs/result.png)
+
+### [DQN](/run2_dqn_2way-single-intersection.py) in a two-way single intersection:
+```
+python3 run2_dqn_2way-single-intersection.py
+```
+
+### [Q-learning](/run3_ql_2way-single-intersection.py) in a two-way single intersection:
+```
+python3 run3_ql_2way-single-intersection.py
+```
+
+### [A2C](/run4_a2c_2way-single-intersection.py) in a two-way single intersection:
+```
+python3 run4_a2c_2way-single-intersection.py
+```
+
+### [SARSA](/run5_sarsa_2way-single-intersection.py ) in a two-way single intersection:
+```
+python3 run5_sarsa_2way-single-intersection.py 
+```
+
+
+## Results:
+
+
+Pressure co2:
+
+
+
+<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image1.png "image_tooltip")
+
+
+<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image2.png "image_tooltip")
+
+
+<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image3.png "image_tooltip")
+
+
+<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image4.png "image_tooltip")
+
+
+<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image5.png "image_tooltip")
+
+
+
+<table>
+  <tr>
+   <td>
+
+<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image6.gif" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td>
+
+<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image7.gif" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+  </tr>
+  <tr>
+   <td>Waiting time
+   </td>
+   <td>Weighted waiting time
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image8.gif" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+   <td>
+
+<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image9.gif" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+  </tr>
+  <tr>
+   <td>Queue co2 normalized weight
+   </td>
+   <td>Queue co2 not-normalized weight
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2" >
+
+<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/image10.gif" width="" alt="alt_text" title="image_tooltip">
+
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2" >Queue length t1
+   </td>
+  </tr>
+</table>
 
 
 
 
 ### How to cite:
-
+---
   @article{agandecolight,
   title={EcoLight: Reward Shaping in Deep Reinforcement Learning for Ergonomic Traffic Signal Control},
   author={Agand, Pedram and Iskrov, Alexey},
   booktitle={NeurIPS 2021 Workshop on Tackling Climate Change with Machine Learning},
   year={2021}
 }
+---
