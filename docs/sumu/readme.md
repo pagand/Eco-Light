@@ -6,36 +6,34 @@ In sumo a street network consists of **nodes** (junctions), **edges** (streets c
 ## **Nodes**
 
 All nodes have a location (x- and y-coordinate, describing distance to the origin in meters) and an id for future reference. Thus our simple node file looks as follows
-
-&lt;nodes>
-
-    &lt;node id="1" x="-250.0" y="0.0" />
-
-    &lt;node id="2" x="+250.0" y="0.0" />
-
-    &lt;node id="3" x="+251.0" y="0.0" />
-
-&lt;/nodes>
+```
+<nodes>
+    <node id="1" x="-250.0" y="0.0" />
+    <node id="2" x="+250.0" y="0.0" />
+    <node id="3" x="+251.0" y="0.0" />
+</nodes>
+```
 
 It should be saved as &lt;name>.nod.xml for Sumo node files.
 
 **Edges:**
 
 We have a** source node** id, a **target node** id, and an **edge id** for future reference. Edges are directed, thus every vehicle travelling this edge will start at the node given in from and end at the node given in to.
+```
+<edges>
+    <edge from="1" id="1to2" to="2" />
+    <edge from="2" id="out" to="3" />
+</edges>
 
-&lt;edges>
-
-    &lt;edge from="1" id="1to2" to="2" />
-
-    &lt;edge from="2" id="out" to="3" />
-
-&lt;/edges>
+```
 
 It should be saved as &lt;name>.edge.xml for Sumo node files.
 
 Now we need a shell command to create a network:
 
+```
 netconvert --node-files=hello.nod.xml --edge-files=hello.edg.xml --output-file=hello.net.xml
+```
 
 This will generate our network called &lt;name>.net.xml.
 
@@ -44,44 +42,32 @@ This will generate our network called &lt;name>.net.xml.
 Now that we have a net, we still need a car. In sumo the vehicles have types defining their basic properties such as **length**, **acceleration** and **deceleration**, and **maximum speed**. Furthermore it needs a so called sigma parameter which introduces some random behavior and is due to the car following model used. Setting it to 0 gives a deterministic car.
 
 we define our single car mainly referring to the entries before and giving it a departure time as in the following &lt;name>.rou.xml
-
-&lt;routes>
-
-    &lt;vType accel="1.0" decel="5.0" id="Car" length="2.0" maxSpeed="100.0" sigma="0.0" />
-
-    &lt;route id="route0" edges="1to2 out"/>
-
-    &lt;vehicle depart="1" id="veh0" route="route0" type="Car" />
-
-&lt;/routes>
-
-**Configuration:**
-
-&lt;configuration>
-
-    &lt;input>
-
-        &lt;net-file value="hello.net.xml"/>
-
-        &lt;route-files value="hello.rou.xml"/>
-
-    &lt;/input>
-
-    &lt;time>
-
-        &lt;begin value="0"/>
-
-        &lt;end value="10000"/>
-
-    &lt;/time>
-
-&lt;/configuration>
+```
+<routes>
+    <vType accel="1.0" decel="5.0" id="Car" length="2.0" maxSpeed="100.0" sigma="0.0" />
+    <route id="route0" edges="1to2 out"/>
+    <vehicle depart="1" id="veh0" route="route0" type="Car" />
+</routes>
+Configuration:
+<configuration>
+    <input>
+        <net-file value="hello.net.xml"/>
+        <route-files value="hello.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="10000"/>
+    </time>
+</configuration>
+```
 
 Saving this to hello.sumocfg we can start the simulation by either
+```
 
 sumo -c hello.sumocfg
 
 sumo-gui -c hello.sumocfg
+```
 
 **Definition of vehicle and routes:**
 
@@ -95,18 +81,20 @@ it is important to know that a vehicle in SUMO consists of three parts:
 
 Any vehicle types or routes referenced by the attributes type or route must be defined before they are used.
 
-&lt;vehicle id="veh0"  depart="1" route="route0" type="type0" />
-
-&lt;vType id="type0" accel="1.0" length="2.0" maxSpeed="10.0" sigma="0.0" />
-
-&lt;route id="route0" edges="1to2 out"/>
+```
+<vehicle id="veh0"  depart="1" route="route0" type="type0" />
+<vType id="type0" accel="1.0" length="2.0" maxSpeed="10.0" sigma="0.0" />
+<route id="route0" edges="1to2 out"/>
+```
 
 
 ## **Repeated vehicles (Flows):**
 
 It’s possible to have multiple vehicle which have the same parameters as the vehicle except for the departure time.
 
-&lt;flow id="flow0" color="1,0,0"  begin="3" end= "500" period="50" type="type0" route="route0" />
+```
+flow id="flow0" color="1,0,0"  begin="3" end= "500" period="50" type="type0" route="route0" />
+```
 
 The id of the created vehicles is "flowId.runningNumber" and they are distributed either equally or randomly in the given interval. 
 
@@ -114,7 +102,9 @@ The id of the created vehicles is "flowId.runningNumber" and they are distribute
 
 Demand information for the simulation may also take the form of origin and destination edges instead of a complete list of edges. 
 
-&lt;trip id="t" depart="0" from="beg" to="end"/>
+```
+trip id="t" depart="0" from="beg" to="end"/>
+```
 
 
 # **Vehicle Types**
@@ -264,34 +254,38 @@ This shows how to use the Traffic Control Interface (in short TraCI) on a simple
 
 Before we start we define a traffic light node:
 
-&lt;node id="0" x="0.0" y="0.0"  type="traffic_light"/>
+```
+node id="0" x="0.0" y="0.0"  type="traffic_light"/>
+```
 
 Then we define 4 nodes for 2 way intersection plus (id; 51,52,53,54) and four starting points nodes (id; 1,2,3,4)
 
 In our rout file we define two vtype one for WE and one for NS
 
-&lt;vType id="typeWE" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="16.67" \
-
+```
+<vType id="typeWE" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="16.67" \
 guiShape="passenger"/>
+       <vType id="typeNS" accel="0.8" decel="4.5" sigma="0.5" length="7" minGap="3" maxSpeed="25" guiShape="bus"/>
 
-       &lt;vType id="typeNS" accel="0.8" decel="4.5" sigma="0.5" length="7" minGap="3" maxSpeed="25" guiShape="bus"/>
+       ```
 
 We have 3 routs right,left,down
+```
 
-&lt;route id="right" edges="51o 1i 2o 52i" />
+<route id="right" edges="51o 1i 2o 52i" />
+<route id="left" edges="52o 2i 1o 51i" />
+<route id="down" edges="54o 4i 3o 53i" />
+```
 
-&lt;route id="left" edges="52o 2i 1o 51i" />
-
-&lt;route id="down" edges="54o 4i 3o 53i" />
 
 We try to consider a priority for the NS vehicle, so the traffic is always green for the WE traffic unless an “emergency” vehicle showed up in the NS; they can immediately go without stop.
 
 The normal way to use traci for sumo is to start it as a subprocess and then the python script connects and run:
-
+```
 traci.start([sumoBinary, "-c", ",&lt;address to sumocfg>",
 
                         "--tripinfo-output", "tripinfo.xml"]
-
+```
 Where sumoBinary is actually sumo-gui. And tripinfo actually creates a  record of cars spawn and actions. 
 
  
@@ -305,20 +299,22 @@ traci.trafficlight.setPhase("0", 2)
  traci.trafficlight.getPhase("0")
 
 We use this command to simulate the scenario for one time step:
-
+```
 traci.simulationStep()
-
+```
 We can understand if the emergency car is showed up using the induction loop
-
+```
 traci.inductionloop.getLastStepVehicleNumber
+```
 
 Which return the if of the vehicle, if it is greater than zero, it means there is someone passing by. 
 
 After the simulation, we use 
+```
 
 traci.close()
 
-
+```
 
 
 ![alt_text](images/image2.gif "image_tooltip")
@@ -345,7 +341,7 @@ Stable Baselines3 (SB3) is a set of reliable implementations of reinforcement le
 
 Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 
-
+```
 
 1. import gym
 2. 
@@ -365,11 +361,10 @@ Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 16.       obs = env.reset()
 17. 
 18. env.close()
-
+```
 Get the current emission:
 
 Here is the map:
-
 
 
 ![alt_text](images/image4.png "image_tooltip")
