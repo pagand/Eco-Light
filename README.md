@@ -112,33 +112,36 @@ python3 run5_sarsa_2way-single-intersection.py
 
 
 
-
-
-
-![alt_text](outputs/image5.png "image_tooltip")
-
-
-
-
-
-![alt_text](outputs/image7.png "image_tooltip")
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![alt_text](outputs/image4.png "Reward") |  ![alt_text](outputs/image7.png "total waiting time")
 
 
 
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![alt_text](outputs/image4.png "Reward") |  ![alt_text](outputs/image7.png "total waiting time")
 
-![alt_text](outputs/image8.png "image_tooltip")
 
 
 
-
-![alt_text](outputs/image9.png "image_tooltip")
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![alt_text](outputs/image7.png "CO2 emission") | ![alt_text](outputs/image9.png "Travel time")
 
 
 
 
 
-![alt_text](outputs/image10.png "image_tooltip")
+
+
+
+
+
+
+
+![alt_text](outputs/image10.png "total stopped")
 
 
 
