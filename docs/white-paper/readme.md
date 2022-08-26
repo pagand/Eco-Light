@@ -254,7 +254,7 @@ self.last_measure = new_co2
 ### Available approaches to change the emission class:
 
 
-#### 1- using the attributes in vType
+#### 1- Using the attributes in vType
 
 
 ```
@@ -367,7 +367,7 @@ It is possible to define repeated vehicle emissions ("flow"s), which have the sa
 
 
 
-#### The second approach by using tracI:
+#### 2- Using tracI:
 
 Changing vehicle type state
 
