@@ -39,7 +39,6 @@ Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 
 Get the current emission: this is the api from Traci:
 ```
-
 sum([ traci.lane.getCO2Emission(lane)  **for **lane **in **self.lanes])
 ```
 
@@ -47,13 +46,10 @@ sum([ traci.lane.getCO2Emission(lane)  **for **lane **in **self.lanes])
 
 Returns the total number of halting vehicles for the last time step on the given edge. A speed of less than 0.1 m/s is considered a halt.
 ```
-
 sum([traci.lane.getLastStepHaltingNumber(lane) **for **lane **in **self.lanes])
 ```
-
 The total wait time over time:
 ```
-
 traci.vehicle.getAccumulatedWaitingTime(veh)
 ```
 
@@ -63,7 +59,6 @@ Edge value retrieval
 
 Returns the current travel time (length/mean speed).
 ```
-
 sum([traci.lane.getTraveltime (lane) **for **lane **in **self.lanes])
 ```
 
@@ -74,13 +69,11 @@ E.g. in  a 2 way intersection with one traffic light, the state vector has 9 ele
 
 For phases it uses one-hot encoded
 ```
-
 phase_id = [1 if self.phase//2 == i else 0 for i in range(self.num_green_phases)]
 ```
 
 Density is the number of vehicle is a specific lane divided by the total number of vehicle that can fit in that lane:
 ```
-
 traci.lane.getLastStepVehicleNumber(lane)
 ```
 
@@ -88,7 +81,6 @@ Returns the number of vehicles that were on the named induction loop within the 
 
 Lane queue is the ratio of number of cars that are halted to the total number of cars that can stop in the lane
 ```
-
 traci.lane.getLastStepHaltingNumber(lane)
 ```
 
@@ -97,7 +89,6 @@ Return number of vehicle with speed less than 0.1.
 
 ### The problem with travel time:
 ```
-
 traci.lane.getTraveltime
 ```
 Compute the travel time using the following relation:
@@ -108,13 +99,11 @@ The problem is that, if a lane has no moving vehicle, there would be a large val
 
 Solution: we redefine the travel time:
 ```
-
 Travel_time = ( <span style="text-decoration:underline;">L</span> * N_t)/(sum [ <span style="text-decoration:underline;">V</span>_{lt}* N_{lt}])
 ```
 
 <span style="text-decoration:underline;">L</span>: average trip length
 ```
-
 traci.lane.getLength(lane)
 ```
 
@@ -122,13 +111,10 @@ N_t: total num of cars in last step
 
 <span style="text-decoration:underline;">V</span>_{lt}: average velocity of lane l at last step
 ```
-
 traci.lane.getLastStepMeanSpeed(lane)
 ```
-
 N_{lt}: total num of cars of lane l in last step
 ```
-
 traci.lane.getLastStepVehicleNumber(lane)
 ```
 
@@ -139,7 +125,6 @@ The speed is considered to be 50 km/h or 13.9 m/s. The average trip length is 30
 
 You can get the current emitted co2 from each vehicle directly via:
 ```
-
 [ traci.vehicle.getCO2Emission(veh)  for veh in self.env.vehicles])
 ```
 
@@ -149,21 +134,13 @@ Policy is epsilon-greedy and the network structure is Q-table.
 
 Network structure:
 ```
-
 Alpha learning rate:
-
 alpha=0.1
-
 Gamma discount factor: 
-
 gamma=0.99
-
 epsilon=0.05
-
 min_epsilon=0.005
-
 decay=1.0
-
 Time of simulation: 100000 sec
 ```
 
@@ -172,7 +149,6 @@ Time of simulation: 100000 sec
 
 It tries to minimize the number of stopped vehicle:
 ```
-
 new_average = np.mean(self.get_stopped_vehicles_num())
 ```
 
@@ -180,73 +156,57 @@ reward = - new_average
 
 In order to make the reward normalize, it also consider the previous queue, and try to maximize the difference:
 ```
-
 reward = self.last_measure - new_average
 ```
-
 The stopped vehicle are obtained from traci:
 ```
-
 traci.lane.getLastStepHaltingNumber(lane)
 ```
 
 
 ### New reward:
 ```
-
 - (sum(self.get_stopped_vehicles_num()))**2
 ```
 
 Considering the waiting time as the reward:
 ```
-
 ts_wait = sum(self.get_waiting_time_per_lane()) / 100.0
-
 reward = self.last_measure - ts_wait
 ```
 
 
 #### Queue length t1: 
 ```
-
 reward = - (sum(self.get_stopped_vehicles_num()))**2
 ```
 
 
 #### Queue length t2: 
 ```
-
 new_average = np.mean(self.get_stopped_vehicles_num())
-
 reward = self.last_measure - new_average
 ```
 
 
 #### Co2 pressure t1:
 ```
-
 reward=abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
 ```
 
 
 #### Co2 pressure t2:
 ```
-
 new_average = abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
-
 reward = self.last_measure - new_average
-
 self.last_measure = new_average
 ```
 
 
 #### Co2 difference:
 ```
-
 new_co2 = self.get_total_emission()/vehicle_base_co2
-
 reward = self.last_measure - new_co2
-
 self.last_measure = new_co2
 ```
 
@@ -379,10 +339,15 @@ Given the vehicles that are launched to the simulation, we can set them to be in
 
 I defined a method in the class, which go through each id of vehicles and set their emission class:
 
+```
+def change_veh_class(self):
+    for lane in self.lanes:
+        veh_list = traci.lane.getLastStepVehicleIDs(lane)
+        for veh in veh_list:
+            traci.vehicle.setEmissionClass(veh, "HBEFA3/PC_G_EU4")
+            a = traci.vehicle.getCO2Emission(veh)
+```
 
-
-
-![alt_text](images/image1.png "image_tooltip")
 
 
 The problem with this is that, traci is applied to the simulation after each simulation step. Hereby, during the time, the vehicle is launched already but the traci is able to change the class only after a certain time, when the step time arrives.
@@ -431,7 +396,6 @@ In this case, we compute the emission for in/out lane, but instead of minimizing
 
 ```
 new_average = abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
-
 reward = self.last_measure - new_average
 ```
 
@@ -473,10 +437,9 @@ Finally the reward is as follows:
 
 Duration of the simulation is 11000 sec with two flows and some constant vehicle randomly.
 ```
+flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
 
-&lt;flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
+flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
 ```
 
 Compute the vehicle lane weight based on the type:
@@ -498,11 +461,8 @@ return weights
 
 Is considering the non-normalized weight based on the co2 emission as follows:
 ```
-
 weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
-
                   max(1,traci.lane.getLastStepVehicleNumber(lane))) **for **lane **in **self.lanes]
-
 weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
 ```
 
@@ -511,7 +471,6 @@ weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
 
 Compute the queue length given the weight according to the type of vehicle:
 ```
-
 weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
 ```
 
@@ -520,13 +479,9 @@ weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
 
 The weighted waiting time is basically same as weighting time, however, it has the corresponding weights added to it. Count +=10
 ```
-
 weighted_wait = [a * b  **for **a, b **in **zip(self.get_waiting_time_per_lane(), self.get_lane_weight())]
-
 ts_wait = sum(weighted_wait) / 100.0
-
 reward = self.last_measure - ts_wait
-
 self.last_measure = ts_wait
 ```
 
@@ -544,23 +499,17 @@ And also at the end, we ask if it wants to save the model:
 
 ```
 prs.add_argument("-pretrain", action="store_true", default=False, help="Do you want to use pretained model?\n")
-
 args = prs.parse_args()
-
 if args.pretrain:
    model = DQN.load("outputs/last_saved_dqn_2way")
    model.set_env(env)
    model.learn(total_timesteps=100000)
 else:
    model.learn(total_timesteps=100000)
-
-
 save_model = input('Do you want to save model (Y/N) ?')
 if save_model == 'Y':
    model.save("outputs/last_saved_dqn_2way")
-
 env.close()
-
 ```
 
 
