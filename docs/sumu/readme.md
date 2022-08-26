@@ -267,14 +267,15 @@ In our rout file we define two vtype one for WE and one for NS
 guiShape="passenger"/>
        <vType id="typeNS" accel="0.8" decel="4.5" sigma="0.5" length="7" minGap="3" maxSpeed="25" guiShape="bus"/>
 
-       ```
-
-We have 3 routs right,left,down
 ```
 
+We have 3 routs right,left,down
+
+```
 <route id="right" edges="51o 1i 2o 52i" />
 <route id="left" edges="52o 2i 1o 51i" />
 <route id="down" edges="54o 4i 3o 53i" />
+
 ```
 
 
