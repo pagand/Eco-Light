@@ -291,12 +291,16 @@ Where sumoBinary is actually sumo-gui. And tripinfo actually creates a  record o
  
 
 We strat with phase 2 in the intersection where the EW is green:
+```
 
 traci.trafficlight.setPhase("0", 2)
+```
 
  We can also read the current phase by:
+ ```
 
  traci.trafficlight.getPhase("0")
+ ```
 
 We use this command to simulate the scenario for one time step:
 ```
@@ -311,7 +315,6 @@ Which return the if of the vehicle, if it is greater than zero, it means there i
 
 After the simulation, we use 
 ```
-
 traci.close()
 
 ```
@@ -371,8 +374,9 @@ Here is the map:
 
 
 And this is the api from Traci:
-
-sum([ traci.lane.getCO2Emission(lane)  **for **lane **in **self.lanes])
+```
+sum([ traci.lane.getCO2Emission(lane)  for lane in self.lanes])
+```
 
 **SUMO-RL: **
 
@@ -384,6 +388,7 @@ For phases it uses one-hot encoded
 
 phase_id = [1 **if **self.phase//2 == i **else **0 **for **i **in **range(self.num_green_phases)]
 
+
 Density is the number of vehicle is a specific lane divided by the total number of vehicle that can fit in that lane:
 
 traci.lane.getLastStepVehicleNumber(lane)
@@ -394,39 +399,6 @@ Lane queue is the ratio of number of cars that are halted to the total number of
 
 traci.lane.getLastStepHaltingNumber(lane)
 
-Return number of vehicle with speed less than 0.1. 
-
-Reward function:
-
-Total waiting time Waiting time
-
-it does normalization as well
-
-ts_wait = sum(self.get_waiting_time_per_lane()) / 100.0
-
-reward = self.last_measure - ts_wait
-
-Network structure:
-
-Alpha learning rate:
-
-alpha=0.1
-
-Gamma discount factor: 
-
-gamma=0.99
-
-epsilon=0.05
-
-min_epsilon=0.005
-
-decay=1.0
-
-Time of simulation:
-
-seconds=100000
-
-Policy is epsilon-greedy and the network structure is Q-table.
 
 The problem with travel time:
 
