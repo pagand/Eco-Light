@@ -112,34 +112,33 @@ python3 run5_sarsa_2way-single-intersection.py
 
 
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-
-![alt_text](outputs/image1.png "image_tooltip")
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](outputs/image2.png "image_tooltip")
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](outputs/image3.png "image_tooltip")
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](outputs/image4.png "image_tooltip")
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](outputs/image5.png "image_tooltip")
+
+
+
+
+
+![alt_text](outputs/image7.png "image_tooltip")
+
+
+
+
+
+![alt_text](outputs/image8.png "image_tooltip")
+
+
+
+
+![alt_text](outputs/image9.png "image_tooltip")
+
+
+
+
+
+![alt_text](outputs/image10.png "image_tooltip")
 
 
 
@@ -147,18 +146,18 @@ python3 run5_sarsa_2way-single-intersection.py
   <tr>
    <td>
 
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-<img src="outputs/image6.gif" width="" alt="alt_text" title="image_tooltip">
+
+<img src="outputs/image1.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
    <td>
 
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-<img src="outputs/image7.gif" width="" alt="alt_text" title="image_tooltip">
+
+<img src="outputs/image2.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
   </tr>
@@ -171,18 +170,15 @@ python3 run5_sarsa_2way-single-intersection.py
   <tr>
    <td>
 
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-<img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
+<img src="outputs/image3.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
    <td>
 
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-
-<img src="outputs/image9.gif" width="" alt="alt_text" title="image_tooltip">
+<img src="outputs/image5.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
   </tr>
@@ -195,10 +191,10 @@ python3 run5_sarsa_2way-single-intersection.py
   <tr>
    <td colspan="2" >
 
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-<img src="outputs/image10.gif" width="" alt="alt_text" title="image_tooltip">
+
+<img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
   </tr>
@@ -213,11 +209,11 @@ python3 run5_sarsa_2way-single-intersection.py
 
 
 ### How to cite:
+
 ---
   @article{agandecolight,
   title={EcoLight: Reward Shaping in Deep Reinforcement Learning for Ergonomic Traffic Signal Control},
   author={Agand, Pedram and Iskrov, Alexey},
   booktitle={NeurIPS 2021 Workshop on Tackling Climate Change with Machine Learning},
-  year={2021}
-}
+  year={2021} }
 ---
