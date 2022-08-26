@@ -482,6 +482,7 @@ weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
 ### Weighted waiting time:
 
 The weighted waiting time is basically same as weighting time, however, it has the corresponding weights added to it. Count +=10
+```
 
 weighted_wait = [a * b  **for **a, b **in **zip(self.get_waiting_time_per_lane(), self.get_lane_weight())]
 
@@ -490,6 +491,7 @@ ts_wait = sum(weighted_wait) / 100.0
 reward = self.last_measure - ts_wait
 
 self.last_measure = ts_wait
+```
 
 
 ### Add a flow of bus:
@@ -501,7 +503,7 @@ We use stable baseline3 for the DRL approach
 I add the following code to run from the pretrained model
 
 And also at the end, we ask if it wants to save the model:
-'''
+```
 
 prs.add_argument("-pretrain", action="store_true", default=**False**, help="Do you want to use pretained model?\n")
 
@@ -526,7 +528,7 @@ save_model = input('Do you want to save model (Y/N) ?')
    model.save("outputs/last_saved_dqn_2way")
 
 env.close()
-'''
+```
 
 
 ### Compute the weighted pressure
@@ -545,7 +547,7 @@ out_weighted_pressure = [a * b  **for **a, b **in **zip(out_pressure, self.get_l
 
 
 ### Weighted Queue length with sarsa:
-'''
+```
 weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
 max(1,traci.lane.getLastStepVehicleNumber(lane)))
-'''
+```
