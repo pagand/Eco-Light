@@ -197,7 +197,7 @@ Reward profile         |
 
 
 
-### cite:
+### Cite:
 
 ```
   @article{agandecolight,
