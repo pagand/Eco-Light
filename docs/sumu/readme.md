@@ -573,6 +573,7 @@ The problem with this is that, traci is applied to the simulation after each sim
 So when we set the emission class to zero for all the vehicles, the total emitted co2 is not exactly zero, it’s something around 3000 which is not what we want!!
 
 I have add four different type of vehicle and currently integrating two of passenger car and truck (HDV) into concurrent flow. In the simulation, sometimes there would be a collision between 2 vehicles, but it omits one of them
+
     ```
     <vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
 <vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
@@ -585,13 +586,14 @@ I have add four different type of vehicle and currently integrating two of passe
   ```
 
 We compute the normalized lane emission as follows, 
+
      ```
     [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
                   max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
-
      ```
 
 Duration of the simulation is 11000 sec with two flows and some constant vehicle randomly.
+
        ```
     <flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
 <flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
@@ -600,6 +602,7 @@ Duration of the simulation is 11000 sec with two flows and some constant vehicle
 Compute the vehicle lane weight based on the type:
 
 In here we consider an additional value (count) for truck or any other vehicle other than passenger. Then compute the normalized value for each lane
+
 ```
 weights = []
 for lane in self.lanes:
@@ -613,6 +616,7 @@ return weights
     ```
 
 Add a flow of bus as follows:
+
     ```
 flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
     ```
@@ -622,6 +626,7 @@ We use stable baseline3 for the DRL approach
 I add the following code to run from the pretrained model
 
 And also at the end, we ask if it wants to save the model:
+
 ```
 prs.add_argument("-pretrain", action="store_true", default=False, help="Do you want to use pretained model?\n")
 
