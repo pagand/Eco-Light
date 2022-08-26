@@ -501,6 +501,7 @@ We use stable baseline3 for the DRL approach
 I add the following code to run from the pretrained model
 
 And also at the end, we ask if it wants to save the model:
+'''
 
 prs.add_argument("-pretrain", action="store_true", default=**False**, help="Do you want to use pretained model?\n")
 
@@ -525,6 +526,7 @@ save_model = input('Do you want to save model (Y/N) ?')
    model.save("outputs/last_saved_dqn_2way")
 
 env.close()
+'''
 
 
 ### Compute the weighted pressure
@@ -543,7 +545,9 @@ out_weighted_pressure = [a * b  **for **a, b **in **zip(out_pressure, self.get_l
 
 
 ### Weighted Queue length with sarsa:
+'''
 
 weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
 
                   max(1,traci.lane.getLastStepVehicleNumber(lane)))
+                  '''
