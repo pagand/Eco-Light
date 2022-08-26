@@ -381,8 +381,6 @@ I defined a method in the class, which go through each id of vehicles and set th
 
 
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
 
 ![alt_text](images/image1.png "image_tooltip")
 
@@ -404,13 +402,13 @@ I have add four different type of vehicle and currently integrating two of passe
 ```
 
 
-### normalized lane emission 
+### Normalized lane emission 
 ```
 [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
                   max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
 ```
 
-
+****
 
 ### Co2 pressure t1:
 
@@ -437,7 +435,7 @@ new_average = abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission
 reward = self.last_measure - new_average
 ```
 
-****
+
 
 ### Co2 pressure t3:
 
@@ -469,6 +467,7 @@ Finally the reward is as follows:
 
 **Reward =  **- (sum(weighted_queue))**2
 
+****
 
 ### New scenario: 
 
