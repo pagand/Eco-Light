@@ -4,7 +4,7 @@
 
 # EcoLight
 
-EcoLight is a ecosystem friendly RL appraoch for traffic control signal. The code is based on [SUMO-RL](https://github.com/LucasAlegre/sumo-rl)
+EcoLight is a ecosystem friendly DRL appraoch for traffic control signal. The code is based on [SUMO-RL](https://github.com/LucasAlegre/sumo-rl)
 
 More information: https://upaspro.com/ecolight/
 
