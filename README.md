@@ -199,7 +199,7 @@ Reward profile         |
 
 ### cite:
 
----
+'''
   @article{agandecolight,
   
   title={EcoLight: Reward Shaping in Deep Reinforcement Learning for Ergonomic Traffic Signal Control},
@@ -211,4 +211,5 @@ Reward profile         |
   year={2021}
   
   }
----
+
+'''
