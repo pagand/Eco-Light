@@ -49,7 +49,7 @@ cd sumo-rl
 pip install -e .
 ```
 
-Alternatively you can install it with compatible version of  Eco-Light
+Alternatively you can install it with compatible version of  Eco-Light (skip this section)
 ### Install Eco-Light
 ```
 git clone https://github.com/pagand/eco-light
