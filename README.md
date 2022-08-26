@@ -57,7 +57,7 @@ python3 run[...].py
 
 
 
-## General Examples (SumoRL)
+## General Examples (SUMO-RL)
 
 Check [experiments](/experiments) to see how to instantiate a SumoEnvironment and use it with your RL algorithm.
 
