@@ -546,8 +546,6 @@ out_weighted_pressure = [a * b  **for **a, b **in **zip(out_pressure, self.get_l
 
 ### Weighted Queue length with sarsa:
 '''
-
 weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
-
-                  max(1,traci.lane.getLastStepVehicleNumber(lane)))
-                  '''
+max(1,traci.lane.getLastStepVehicleNumber(lane)))
+'''
