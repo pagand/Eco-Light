@@ -392,56 +392,52 @@ The problem with this is that, traci is applied to the simulation after each sim
 So when we set the emission class to zero for all the vehicles, the total emitted co2 is not exactly zero, it’s something around 3000 which is not what we want.
 
 I have add four different type of vehicle and currently integrating two of passenger car and truck (HDV) into concurrent flow. In the simulation, sometimes there would be a collision between 2 vehicles, but it omits one of them
-
-&lt;vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  &lt;!--HBEFA3/Bus-->
-
-&lt;vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  &lt;!--Bus-->
-
-&lt;vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  &lt;!--heavy duty-->
-
-&lt;vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  &lt;!--HBEFA3/Bus-->
-
-&lt;flow id="flow_nsc" route="route_ns" type="car" begin="0" end="100000" probability="0.1" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
+```
+<vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
+<vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
+<vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
+<vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--HBEFA3/Bus-->
+<flow id="flow_nsc" route="route_ns" type="car" begin="0" end="100000" probability="0.1" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
+```
 
 
 ### normalized lane emission 
-
+```
 [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
+                  max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
+```
 
-                  max(1,traci.lane.getLastStepVehicleNumber(lane)))) **for **lane **in **self.lanes]
 
 
 ### Co2 pressure t1:
 
 We compute in/out pressure given the number of vehicles. But we finally consider the weighted version according to their emission base norm.
-
-in_pressure = [traci.lane.getLastStepVehicleNumber(lane) **for **lane **in **self.lanes]
-
-in_weighted_pressure = [a *(b+1) **for **a, b **in **zip(in_pressure, self.get_lanes_emission_norm())]
-
-out_pressure = [traci.lane.getLastStepVehicleNumber(lane) **for **lane **in **self.out_lanes]
-
-out_weighted_pressure = [a * (b + 1) **for **a, b **in **zip(out_pressure, self.get_out_lanes_emission_norm())]
+```
+in_pressure = [traci.lane.getLastStepVehicleNumber(lane) for lane in self.lanes]
+in_weighted_pressure = [a *(b+1) for a, b in zip(in_pressure, self.get_lanes_emission_norm())]
+out_pressure = [traci.lane.getLastStepVehicleNumber(lane) for lane in self.out_lanes]
+out_weighted_pressure = [a * (b + 1) for a, b in zip(out_pressure, self.get_out_lanes_emission_norm())]
+```
 
 We finally return the difference of their sum as reward:
-
-**Reward = **abs(sum(in_weighted_pressure) - sum(out_weighted_pressure))
-
+```
+Reward = abs(sum(in_weighted_pressure) - sum(out_weighted_pressure))
+```
 
 ### Co2 pressure t2:
 
 In this case, we compute the emission for in/out lane, but instead of minimizing it directly, we do it via the difference to the previous measurement
 
+```
 new_average = abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
 
 reward = self.last_measure - new_average
+```
 
+****
 
 ### Co2 pressure t3:
 
