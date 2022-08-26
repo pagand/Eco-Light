@@ -386,28 +386,27 @@ State: a vector containing the traffic light phases with density and number of q
 E.g. in  a 2 way intersection with one traffic light, the state vector has 9 elements. 
 
 For phases it uses one-hot encoded
-
-phase_id = [1 **if **self.phase//2 == i **else **0 **for **i **in **range(self.num_green_phases)]
+```
+phase_id = [1 if self.phase//2 == i else 0 for i in range(self.num_green_phases)]
+```
 
 
 Density is the number of vehicle is a specific lane divided by the total number of vehicle that can fit in that lane:
-
+```
 traci.lane.getLastStepVehicleNumber(lane)
-
+```
 Returns the number of vehicles that were on the named induction loop within the last simulation step [#];
 
 Lane queue is the ratio of number of cars that are halted to the total number of cars that can stop in the lane
-
+```
 traci.lane.getLastStepHaltingNumber(lane)
-
+```
 
 The problem with travel time:
-
+```
 traci.lane.getTraveltime
-
-Compute the travel time using the following relation:
-
-length/ave_speed
+```
+Compute the travel time using the following relation: length/ave_speed
 
 The problem is that, if a lane has no moving vehicle, there would be a large value for travel time.
 
@@ -416,25 +415,26 @@ Solution: we redefine the travel time:
 Travel_time = ( <span style="text-decoration:underline;">L</span> * N_t)/(sum [ <span style="text-decoration:underline;">V</span>_{lt}* N_{lt}])
 
 <span style="text-decoration:underline;">L</span>: average trip length
-
+```
 traci.lane.getLength(lane)
+```
 
 N_t: total num of cars in last step
 
 <span style="text-decoration:underline;">V</span>_{lt}: average velocity of lane l at last step
-
+```
 traci.lane.getLastStepMeanSpeed(lane)
-
+```
 N_{lt}: total num of cars of lane l in last step
-
+```
 traci.lane.getLastStepVehicleNumber(lane)
-
+```
 The speed is considered to be 50 km/h or 13.9 m/s. The average trip length is 300 m. Hence, the fastest travel time is 21.58 Sec.
 
 You can get the current emitted co2 from each vehicle directly via:
-
-[ traci.vehicle.getCO2Emission(veh)  **for **veh **in **self.env.vehicles])
-
+```
+[ traci.vehicle.getCO2Emission(veh)  for veh in self.env.vehicles])
+```
 Available approaches to change the emission class:
 
 1- using the attributes in vType
