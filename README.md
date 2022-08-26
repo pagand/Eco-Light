@@ -108,48 +108,36 @@ python3 run5_sarsa_2way-single-intersection.py
 ## Results:
 
 
-#### Pressure co2:
+#### Pressure CO2:
 
 
 
-Solarized dark             |  Solarized Ocean
+Total CO2 emission          |  Total travel time
 :-------------------------:|:-------------------------:
-![alt_text](outputs/image4.png "Reward") |  ![alt_text](outputs/image7.png "total waiting time")
+![alt_text](outputs/image7.png "CO2 emission")|  ![alt_text](outputs/image9.png "Travel time")
 
 
 
 
-Solarized dark             |  Solarized Ocean
+
+
+Total stopped time           | Total waiting time
 :-------------------------:|:-------------------------:
-![alt_text](outputs/image4.png "Reward") |  ![alt_text](outputs/image7.png "total waiting time")
+ ![alt_text](outputs/image10.png "total stopped")| ![alt_text](outputs/image7.png "total waiting time")
+
+
+Reward profile         | 
+:-------------------------:|
+![alt_text](outputs/image4.png "Reward") | 
 
 
 
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-![alt_text](outputs/image7.png "CO2 emission") | ![alt_text](outputs/image9.png "Travel time")
-
-
-
-
-
-
-
-
-
-
-
-
-![alt_text](outputs/image10.png "total stopped")
-
-
+#### Simulation GUI:
 
 <table>
   <tr>
    <td>
-
-
 
 
 <img src="outputs/image1.gif" width="" alt="alt_text" title="image_tooltip">
@@ -165,7 +153,7 @@ Solarized dark             |  Solarized Ocean
    </td>
   </tr>
   <tr>
-   <td>Waiting time
+   <td>Waiting time 
    </td>
    <td>Weighted waiting time
    </td>
@@ -186,15 +174,13 @@ Solarized dark             |  Solarized Ocean
    </td>
   </tr>
   <tr>
-   <td>Queue co2 normalized weight
+   <td>Queue length CO2 normalized weight
    </td>
-   <td>Queue co2 not-normalized weight
+   <td>Queue length co2 not-normalized weight
    </td>
   </tr>
   <tr>
    <td colspan="2" >
-
-
 
 
 <img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
@@ -202,7 +188,7 @@ Solarized dark             |  Solarized Ocean
    </td>
   </tr>
   <tr>
-   <td colspan="2" >Queue length t1
+   <td colspan="2" >Queue length type1
    </td>
   </tr>
 </table>
