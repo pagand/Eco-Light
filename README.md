@@ -19,6 +19,8 @@ Goals of this repository:
 - Support Multiagent RL
 - Compatibility with gym.Env and popular RL libraries such as [stable-baselines3](https://github.com/DLR-RM/stable-baselines3) and [RLlib](https://docs.ray.io/en/master/rllib.html)
 - Easy customisation: state and reward definitions are easily modifiable
+- Prioritize different road users based on their CO2 emission class
+- Reward shaping scheme with hyper-parameter tuning
 
 ## Install
 
