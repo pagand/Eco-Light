@@ -117,7 +117,7 @@ python3 run5_sarsa_2way-single-intersection.py
 ## Results:
 
 
-#### Pressure CO2:
+#### 1-  Profile of different metrics for early stage learning with CO2 Pressure reward:
 
 
 
@@ -142,7 +142,7 @@ Reward profile         |
 
 
 
-#### Simulation GUI:
+#### 2- Simulation GUI: Comparing different reward functions
 
 <table>
   <tr>
