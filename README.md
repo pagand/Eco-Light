@@ -199,10 +199,16 @@ Reward profile         |
 
 ### cite:
 
--
+---
   @article{agandecolight,
+  
   title={EcoLight: Reward Shaping in Deep Reinforcement Learning for Ergonomic Traffic Signal Control},
+  
   author={Agand, Pedram and Iskrov, Alexey},
+  
   booktitle={NeurIPS 2021 Workshop on Tackling Climate Change with Machine Learning},
-  year={2021} }
--
+  
+  year={2021}
+  
+  }
+---
