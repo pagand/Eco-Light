@@ -59,51 +59,51 @@ cd ecolight
 pip install -e .
 ```
 
+## Examples
 
-
-## General Examples (SUMO-RL)
+### SUMO-RL Examples
 
 Check [experiments](/experiments) to see how to instantiate a SumoEnvironment and use it with your RL algorithm.
 
-### [Q-learning](/sumo-rl/agents/ql_agent.py) in a one-way single intersection:
+#### [Q-learning](/sumo-rl/agents/ql_agent.py) in a one-way single intersection:
 ```
 python3 experiments/ql_single-intersection.py 
 ```
 
-### [RLlib A3C](/experiments/a3c_4x4grid.py) multiagent in a 4x4 grid:
+#### [RLlib A3C](/experiments/a3c_4x4grid.py) multiagent in a 4x4 grid:
 ```
 python3 experiments/a3c_4x4grid.py
 ```
 
-### [stable-baselines3 DQN](/experiments/dqn_2way-single-intersection.py) in a 2-way single intersection:
+#### [stable-baselines3 DQN](/experiments/dqn_2way-single-intersection.py) in a 2-way single intersection:
 ```
 python3 experiments/dqn_2way-single-intersection.py
 ```
 
-## CO2 optimzed Examples (Eco-Light)
+### CO2 optimzed Examples (Eco-Light)
 prioritzed road users with reward shaping scheme
 
-### [Q-learning](/run1_single-intersection.py) in a one-way single intersection:
+#### [Q-learning](/run1_single-intersection.py) in a one-way single intersection:
 ```
 python3 run1_single-intersection.py
 ```
 
-### [DQN](/run2_dqn_2way-single-intersection.py) in a two-way single intersection:
+#### [DQN](/run2_dqn_2way-single-intersection.py) in a two-way single intersection:
 ```
 python3 run2_dqn_2way-single-intersection.py
 ```
 
-### [Q-learning](/run3_ql_2way-single-intersection.py) in a two-way single intersection:
+#### [Q-learning](/run3_ql_2way-single-intersection.py) in a two-way single intersection:
 ```
 python3 run3_ql_2way-single-intersection.py
 ```
 
-### [A2C](/run4_a2c_2way-single-intersection.py) in a two-way single intersection:
+#### [A2C](/run4_a2c_2way-single-intersection.py) in a two-way single intersection:
 ```
 python3 run4_a2c_2way-single-intersection.py
 ```
 
-### [SARSA](/run5_sarsa_2way-single-intersection.py ) in a two-way single intersection:
+#### [SARSA](/run5_sarsa_2way-single-intersection.py ) in a two-way single intersection:
 ```
 python3 run5_sarsa_2way-single-intersection.py 
 ```
