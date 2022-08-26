@@ -38,53 +38,68 @@ Stable-Baselines3 supports PyTorch 1.4+ and python 3.6+
 ```
 
 Get the current emission: this is the api from Traci:
+```
 
 sum([ traci.lane.getCO2Emission(lane)  **for **lane **in **self.lanes])
-
+```
 
 ### The total stopped over time:
 
 Returns the total number of halting vehicles for the last time step on the given edge. A speed of less than 0.1 m/s is considered a halt.
+```
 
 sum([traci.lane.getLastStepHaltingNumber(lane) **for **lane **in **self.lanes])
+```
 
 The total wait time over time:
+```
 
 traci.vehicle.getAccumulatedWaitingTime(veh)
+```
 
 The total travel time:
 
 Edge value retrieval
 
 Returns the current travel time (length/mean speed).
+```
 
 sum([traci.lane.getTraveltime (lane) **for **lane **in **self.lanes])
+```
 
-State: a vector containing the traffic light phases with density and number of queue for each lane
+### State: 
+A vector containing the traffic light phases with density and number of queue for each lane
 
 E.g. in  a 2 way intersection with one traffic light, the state vector has 9 elements. 
 
 For phases it uses one-hot encoded
+```
 
 phase_id = [1 **if **self.phase//2 == i **else **0 **for **i **in **range(self.num_green_phases)]
+```
 
 Density is the number of vehicle is a specific lane divided by the total number of vehicle that can fit in that lane:
+```
 
 traci.lane.getLastStepVehicleNumber(lane)
+```
 
 Returns the number of vehicles that were on the named induction loop within the last simulation step [#];
 
 Lane queue is the ratio of number of cars that are halted to the total number of cars that can stop in the lane
+```
 
 traci.lane.getLastStepHaltingNumber(lane)
+```
 
 Return number of vehicle with speed less than 0.1. 
 
 
 ### The problem with travel time:
+```
 
 traci.lane.getTraveltime
-
+```
 Compute the travel time using the following relation:
 
 length/ave_speed
@@ -92,22 +107,30 @@ length/ave_speed
 The problem is that, if a lane has no moving vehicle, there would be a large value for travel time.
 
 Solution: we redefine the travel time:
+```
 
 Travel_time = ( <span style="text-decoration:underline;">L</span> * N_t)/(sum [ <span style="text-decoration:underline;">V</span>_{lt}* N_{lt}])
+```
 
 <span style="text-decoration:underline;">L</span>: average trip length
+```
 
 traci.lane.getLength(lane)
+```
 
 N_t: total num of cars in last step
 
 <span style="text-decoration:underline;">V</span>_{lt}: average velocity of lane l at last step
+```
 
 traci.lane.getLastStepMeanSpeed(lane)
+```
 
 N_{lt}: total num of cars of lane l in last step
+```
 
 traci.lane.getLastStepVehicleNumber(lane)
+```
 
 The speed is considered to be 50 km/h or 13.9 m/s. The average trip length is 300 m. Hence, the fastest travel time is 21.58 Sec.
 
@@ -115,15 +138,17 @@ The speed is considered to be 50 km/h or 13.9 m/s. The average trip length is 30
 ### Co2 emission:
 
 You can get the current emitted co2 from each vehicle directly via:
+```
 
-[ traci.vehicle.getCO2Emission(veh)  **for **veh **in **self.env.vehicles])
-
+[ traci.vehicle.getCO2Emission(veh)  for veh in self.env.vehicles])
+```
 
 ### Q-table:
 
 Policy is epsilon-greedy and the network structure is Q-table.
 
 Network structure:
+```
 
 Alpha learning rate:
 
@@ -139,72 +164,91 @@ min_epsilon=0.005
 
 decay=1.0
 
-Time of simulation:
-
-seconds=100000
+Time of simulation: 100000 sec
+```
 
 
 ### Reward: queue average reward
 
 It tries to minimize the number of stopped vehicle:
+```
 
 new_average = np.mean(self.get_stopped_vehicles_num())
+```
 
 reward = - new_average
 
 In order to make the reward normalize, it also consider the previous queue, and try to maximize the difference:
+```
 
 reward = self.last_measure - new_average
+```
 
 The stopped vehicle are obtained from traci:
+```
 
 traci.lane.getLastStepHaltingNumber(lane)
+```
 
 
 ### New reward:
+```
 
 - (sum(self.get_stopped_vehicles_num()))**2
+```
 
 Considering the waiting time as the reward:
+```
 
 ts_wait = sum(self.get_waiting_time_per_lane()) / 100.0
 
 reward = self.last_measure - ts_wait
+```
 
 
 #### Queue length t1: 
+```
 
 reward = - (sum(self.get_stopped_vehicles_num()))**2
+```
 
 
 #### Queue length t2: 
+```
 
 new_average = np.mean(self.get_stopped_vehicles_num())
 
 reward = self.last_measure - new_average
+```
 
 
 #### Co2 pressure t1:
+```
 
 reward=abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
+```
 
 
 #### Co2 pressure t2:
+```
 
 new_average = abs(sum(self.get_lanes_emission())-sum(self.get_out_lanes_emission()))
 
 reward = self.last_measure - new_average
 
 self.last_measure = new_average
+```
 
 
 #### Co2 difference:
+```
 
 new_co2 = self.get_total_emission()/vehicle_base_co2
 
 reward = self.last_measure - new_co2
 
 self.last_measure = new_co2
+```
 
 
 ### Available approaches to change the emission class:
