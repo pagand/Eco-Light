@@ -691,3 +691,132 @@ save_model = input('Do you want to save model (Y/N) ?')
    model.save("outputs/last_saved_dqn_2way")
 
 env.close()
+
+
+After 100,000 step run in 2 way intersection:
+
+
+<table>
+  <tr>
+   <td>vehicle
+   </td>
+   <td>Co2 emission (50km/h)
+   </td>
+  </tr>
+  <tr>
+   <td>PC_G_EU4
+   </td>
+   <td>0.31*10^5
+   </td>
+  </tr>
+  <tr>
+   <td>HDV_D_EU4
+   </td>
+   <td>1.51*10^5
+   </td>
+  </tr>
+  <tr>
+   <td>BUS
+   </td>
+   <td>1.38*10^5
+   </td>
+  </tr>
+</table>
+
+
+Co2: (0-50 km/h)
+
+
+<table>
+  <tr>
+   <td>Vehicle type
+   </td>
+   <td>Stop cost *10^5
+   </td>
+   <td>Idle cost *10^5
+   </td>
+   <td>Ratio stop/idle
+   </td>
+  </tr>
+  <tr>
+   <td>PC_G_EU4
+   </td>
+   <td>55.8
+   </td>
+   <td>0.408
+   </td>
+   <td>137
+   </td>
+  </tr>
+  <tr>
+   <td>HGV
+   </td>
+   <td>562
+   </td>
+   <td>1.26
+   </td>
+   <td>446
+   </td>
+  </tr>
+  <tr>
+   <td>BUS
+   </td>
+   <td>333
+   </td>
+   <td>1.56
+   </td>
+   <td>213
+   </td>
+  </tr>
+</table>
+
+
+Nox (50 km/h)
+
+
+<table>
+  <tr>
+   <td>Vehicle type
+   </td>
+   <td>Stop cost *10^5
+   </td>
+   <td>Idle cost*10^5
+   </td>
+   <td>Ratio stop/idle
+   </td>
+  </tr>
+  <tr>
+   <td>PC_G_EU4
+   </td>
+   <td>0.36
+   </td>
+   <td>0.67
+   </td>
+   <td>474
+   </td>
+  </tr>
+  <tr>
+   <td>HGV
+   </td>
+   <td>2.26
+   </td>
+   <td>13.3
+   </td>
+   <td>169
+   </td>
+  </tr>
+  <tr>
+   <td>BUS
+   </td>
+   <td>1.64
+   </td>
+   <td>21.3
+   </td>
+   <td>76.9
+   </td>
+  </tr>
+</table>
+
+
+Pressure co2:
+
