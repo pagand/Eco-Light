@@ -75,7 +75,7 @@ E.g. in  a 2 way intersection with one traffic light, the state vector has 9 ele
 For phases it uses one-hot encoded
 ```
 
-phase_id = [1 **if **self.phase//2 == i **else **0 **for **i **in **range(self.num_green_phases)]
+phase_id = [1 if self.phase//2 == i else 0 for i in range(self.num_green_phases)]
 ```
 
 Density is the number of vehicle is a specific lane divided by the total number of vehicle that can fit in that lane:
