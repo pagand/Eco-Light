@@ -574,8 +574,8 @@ So when we set the emission class to zero for all the vehicles, the total emitte
 
 I have add four different type of vehicle and currently integrating two of passenger car and truck (HDV) into concurrent flow. In the simulation, sometimes there would be a collision between 2 vehicles, but it omits one of them
 
-    ```
-    <vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
+```
+<vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
 <vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
 <vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
 <vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--HBEFA3/Bus-->
@@ -583,21 +583,20 @@ I have add four different type of vehicle and currently integrating two of passe
 <flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
 <flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
 <flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
-  ```
+```
 
 We compute the normalized lane emission as follows, 
 
-     ```
-    [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
-                  max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
-     ```
+```
+ [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
+ ```
 
 Duration of the simulation is 11000 sec with two flows and some constant vehicle randomly.
 
-       ```
-    <flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
+```
+<flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
 <flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
-       ```
+```
 
 Compute the vehicle lane weight based on the type:
 
@@ -613,13 +612,13 @@ for lane in self.lanes:
            count += 10
    weights.append((len(veh_list)+count)/max(1,len(veh_list)))
 return weights
-    ```
+```
 
 Add a flow of bus as follows:
 
-    ```
+```
 flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
-    ```
+```
 
 We use stable baseline3 for the DRL approach
 
