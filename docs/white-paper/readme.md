@@ -534,20 +534,15 @@ env.close()
 ### Compute the weighted pressure
 
  according to lane weight for in/outgoing lanes:
-
-in_pressure = [traci.lane.getLastStepVehicleNumber(lane) **for **lane **in **self.lanes]
-
-in_weighted_pressure = [a *b **for **a, b **in **zip(in_pressure, self.get_lane_weight(self.lanes))]
-
-out_pressure = [traci.lane.getLastStepVehicleNumber(lane) **for **lane **in **self.out_lanes]
-
-out_weighted_pressure = [a * b  **for **a, b **in **zip(out_pressure, self.get_lane_weight(self.out_lanes))]
-
-**return **abs(sum(in_weighted_pressure) - sum(out_weighted_pressure))
-
+```
+in_pressure = [traci.lane.getLastStepVehicleNumber(lane) for lane in self.lanes]
+in_weighted_pressure = [a *b for a, b in zip(in_pressure, self.get_lane_weight(self.lanes))]
+out_pressure = [traci.lane.getLastStepVehicleNumber(lane) for lane in self.out_lanes]
+out_weighted_pressure = [a * b  for a, b in zip(out_pressure, self.get_lane_weight(self.out_lanes))]
+return abs(sum(in_weighted_pressure) - sum(out_weighted_pressure))
+```
 
 ### Weighted Queue length with sarsa:
 ```
-weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
-max(1,traci.lane.getLastStepVehicleNumber(lane)))
+weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/ max(1,traci.lane.getLastStepVehicleNumber(lane)))
 ```
