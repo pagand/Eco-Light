@@ -433,50 +433,48 @@ Finally the reward is as follows:
 ### New scenario: 
 
 Duration of the simulation is 11000 sec with two flows and some constant vehicle randomly.
+```
 
 &lt;flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
 
 &lt;flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
+```
 
 Compute the vehicle lane weight based on the type:
 
 In here we consider an additional value (count) for truck or any other vehicle other than passenger. Then compute the normalized value for each lane
-
+```
 weights = []
-
-**for **lane **in **self.lanes:
-
+for lane in self.lanes:
    count = 0
-
    veh_list = traci.lane.getLastStepVehicleIDs(lane)
-
-   **for **veh **in **veh_list:
-
-       **if **traci.vehicle.getEmissionClass(veh) == "HBEFA3/HDV":
-
+   for veh in veh_list:
+       if traci.vehicle.getEmissionClass(veh) == "HBEFA3/HDV":
            count += 10
-
    weights.append((len(veh_list)+count)/max(1,len(veh_list)))
-
-**return **weights
-
+return weights
+```
 
 ### Weighted queue t2: 
 
 Is considering the non-normalized weight based on the co2 emission as follows:
+```
 
 weight = [ (traci.lane.getCO2Emission(lane) / self.vehicle_base_co2/
 
                   max(1,traci.lane.getLastStepVehicleNumber(lane))) **for **lane **in **self.lanes]
 
 weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
+```
 
 
 ### Weighted queue t3: 
 
 Compute the queue length given the weight according to the type of vehicle:
+```
 
 weighted_queue = [a * b  **for **a, b **in **zip(queue, self.get_lane_weight())]
+```
 
 
 ### Weighted waiting time:
@@ -495,8 +493,9 @@ self.last_measure = ts_wait
 
 
 ### Add a flow of bus:
-
-&lt;flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
+```
+flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
+```
 
 We use stable baseline3 for the DRL approach
 
