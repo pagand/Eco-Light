@@ -22,7 +22,7 @@ Goals of this repository:
 
 ## Install
 
-### Install SUMO latest version:
+### 1- Install SUMO latest version:
 
 ```
 sudo add-apt-repository ppa:sumo/stable
@@ -35,7 +35,7 @@ echo 'export SUMO_HOME="/usr/share/sumo"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### Install SUMO-RL
+### 2- Install SUMO-RL
 
 Stable release version is available through pip
 ```
@@ -50,7 +50,7 @@ pip install -e .
 ```
 
 Alternatively you can install it with compatible version of  Eco-Light (skip this section)
-### Install Eco-Light
+### 3- Install Eco-Light
 ```
 git clone https://github.com/pagand/eco-light
 cd ecolight
