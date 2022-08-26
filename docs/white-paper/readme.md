@@ -503,31 +503,26 @@ We use stable baseline3 for the DRL approach
 I add the following code to run from the pretrained model
 
 And also at the end, we ask if it wants to save the model:
-```
 
-prs.add_argument("-pretrain", action="store_true", default=**False**, help="Do you want to use pretained model?\n")
+```
+prs.add_argument("-pretrain", action="store_true", default=False, help="Do you want to use pretained model?\n")
 
 args = prs.parse_args()
 
-**if **args.pretrain:
-
+if args.pretrain:
    model = DQN.load("outputs/last_saved_dqn_2way")
-
    model.set_env(env)
-
+   model.learn(total_timesteps=100000)
+else:
    model.learn(total_timesteps=100000)
 
-**else**:
-
-   model.learn(total_timesteps=100000)
 
 save_model = input('Do you want to save model (Y/N) ?')
-
-**if **save_model == 'Y':
-
+if save_model == 'Y':
    model.save("outputs/last_saved_dqn_2way")
 
 env.close()
+
 ```
 
 
