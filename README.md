@@ -6,8 +6,6 @@
 
 EcoLight is a ecosystem friendly DRL appraoch for traffic control signal. The code is based on [SUMO-RL](https://github.com/LucasAlegre/sumo-rl)
 
-More information: https://upaspro.com/ecolight/
-
 SUMO-RL provides a simple interface to instantiate Reinforcement Learning environments with [SUMO](https://github.com/eclipse/sumo) for Traffic Signal Control. 
 
 The main class [SumoEnvironment](/sumo_rl/environment/env.py) inherits [MultiAgentEnv](https://github.com/ray-project/ray/blob/master/python/ray/rllib/env/multi_agent_env.py) from [RLlib](https://github.com/ray-project/ray/tree/master/python/ray/rllib).  
@@ -59,9 +57,20 @@ cd ecolight
 pip install -e .
 ```
 
+## Documentation
+### SUMO simulator
+[Link](https://github.com/pagand/Eco-Light/tree/master/docs/sumu)
+
+### Eco-Light white paper
+[Link](https://github.com/pagand/Eco-Light/tree/master/docs/white-paper)
+
+### Eco-light presenation
+[Link](https://upaspro.com/ecolight/)
+
+
 ## Examples
 
-### SUMO-RL Examples
+### General examples (SUMU-RL)
 
 Check [experiments](/experiments) to see how to instantiate a SumoEnvironment and use it with your RL algorithm.
 
@@ -80,8 +89,7 @@ python3 experiments/a3c_4x4grid.py
 python3 experiments/dqn_2way-single-intersection.py
 ```
 
-### CO2 optimzed Examples (Eco-Light)
-prioritzed road users with reward shaping scheme
+### CO2-optimzed examples (Eco-Light)
 
 #### [Q-learning](/run1_single-intersection.py) in a one-way single intersection:
 ```
