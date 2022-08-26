@@ -44,17 +44,19 @@ Stable release version is available through pip
 pip install sumo-rl
 ```
 
-Alternatively you can install using the latest (unreleased) version
+or you can install using the latest (unreleased) version
 ```
 git clone https://github.com/LucasAlegre/sumo-rl
 cd sumo-rl
 pip install -e .
 ```
-### Run EcoLight
+
+Alternatively you can install it with compatible version of  Eco-Light
+### Install Eco-Light
 ```
-git clone https://github.com/pagand/ecolight
+git clone https://github.com/pagand/eco-light
 cd ecolight
-python3 run[...].py
+pip install -e .
 ```
 
 
