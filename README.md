@@ -58,14 +58,11 @@ pip install -e .
 ```
 
 ## Documentation
-### SUMO simulator
-[Link](https://github.com/pagand/Eco-Light/tree/master/docs/sumu)
 
-### Eco-Light white paper
-[Link](https://github.com/pagand/Eco-Light/tree/master/docs/white-paper)
+SUMO simulator         | Eco-Light white paper | Eco-light presenation
+:-------------------------:|:-------------------------:|:-------------------------:
+[Link](https://github.com/pagand/Eco-Light/tree/master/docs/sumu) |[Link](https://github.com/pagand/Eco-Light/tree/master/docs/white-paper)|[Link](https://upaspro.com/ecolight/)
 
-### Eco-light presenation
-[Link](https://upaspro.com/ecolight/)
 
 
 ## Examples
