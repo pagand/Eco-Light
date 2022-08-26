@@ -600,92 +600,74 @@ The problem with this is that, traci is applied to the simulation after each sim
 So when we set the emission class to zero for all the vehicles, the total emitted co2 is not exactly zero, it’s something around 3000 which is not what we want!!
 
 I have add four different type of vehicle and currently integrating two of passenger car and truck (HDV) into concurrent flow. In the simulation, sometimes there would be a collision between 2 vehicles, but it omits one of them
-
-&lt;vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  &lt;!--HBEFA3/Bus-->
-
-&lt;vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  &lt;!--Bus-->
-
-&lt;vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  &lt;!--heavy duty-->
-
-&lt;vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  &lt;!--HBEFA3/Bus-->
-
-&lt;flow id="flow_nsc" route="route_ns" type="car" begin="0" end="100000" probability="0.1" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
+    ```
+    <vType id="electric" emissionClass="zero" color="1,0,0" accel="0.8" decel="4.5"/>  <!--HBEFA3/Bus-->
+<vType id="bus" emissionClass="HBEFA3/Bus" color="0,1,0" accel="0.4" decel="2.2"/>  <!--Bus-->
+<vType id="truck" emissionClass="HBEFA3/HDV" color="0,0,1" accel="0.3" decel="2"/>  <!--heavy duty-->
+<vType id="car"  color="1,1,1" accel="0.8" decel="4.5" />  <!--HBEFA3/Bus-->
+<flow id="flow_nsc" route="route_ns" type="car" begin="0" end="100000" probability="0.1" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_wec" route="route_we" type="car" begin="0" end="100000" probability="0.4" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_nst" route="route_ns" type="truck" begin="0" end="100000" probability="0.02" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_wet" route="route_we" type="truck" begin="0" end="100000" probability="0.05" departSpeed="max" departPos="base" departLane="best"/>
+  ```
 
 We compute the normalized lane emission as follows, 
+     ```
+    [ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
+                  max(1,traci.lane.getLastStepVehicleNumber(lane)))) for lane in self.lanes]
 
-[ max(0,min(1,(traci.lane.getCO2Emission(lane)-self.vehicle_base_co2) / vehicle_base_max/
-
-                  max(1,traci.lane.getLastStepVehicleNumber(lane)))) **for **lane **in **self.lanes]
+     ```
 
 Duration of the simulation is 11000 sec with two flows and some constant vehicle randomly.
-
-&lt;flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
-
-&lt;flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
+       ```
+    <flow id="flow_nsc1" route="route_ns" type="car" begin="9918" end="11000" period="14" departSpeed="max" departPos="base" departLane="best"/>
+<flow id="flow_wec1" route="route_we" type="car" begin="9999" end="11000" period="13" departSpeed="max" departPos="base" departLane="best"/>
+       ```
 
 Compute the vehicle lane weight based on the type:
 
 In here we consider an additional value (count) for truck or any other vehicle other than passenger. Then compute the normalized value for each lane
-
+```
 weights = []
-
-**for **lane **in **self.lanes:
-
+for lane in self.lanes:
    count = 0
-
    veh_list = traci.lane.getLastStepVehicleIDs(lane)
-
-   **for **veh **in **veh_list:
-
-       **if **traci.vehicle.getEmissionClass(veh) == "HBEFA3/HDV":
-
+   for veh in veh_list:
+       if traci.vehicle.getEmissionClass(veh) == "HBEFA3/HDV":
            count += 10
-
    weights.append((len(veh_list)+count)/max(1,len(veh_list)))
-
-**return **weights
+return weights
+    ```
 
 Add a flow of bus as follows:
-
-&lt;flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
+    ```
+flow id="flow_nst" route="route_ns" type="bus" begin="0" end="11000" period="20" departSpeed="max" departPos="base" departLane="best"/>
+    ```
 
 We use stable baseline3 for the DRL approach
 
 I add the following code to run from the pretrained model
 
 And also at the end, we ask if it wants to save the model:
-
-I
-
-prs.add_argument("-pretrain", action="store_true", default=**False**, help="Do you want to use pretained model?\n")
+```
+prs.add_argument("-pretrain", action="store_true", default=False, help="Do you want to use pretained model?\n")
 
 args = prs.parse_args()
 
-**if **args.pretrain:
-
+if args.pretrain:
    model = DQN.load("outputs/last_saved_dqn_2way")
-
    model.set_env(env)
-
+   model.learn(total_timesteps=100000)
+else:
    model.learn(total_timesteps=100000)
 
-**else**:
-
-   model.learn(total_timesteps=100000)
 
 save_model = input('Do you want to save model (Y/N) ?')
-
-**if **save_model == 'Y':
-
+if save_model == 'Y':
    model.save("outputs/last_saved_dqn_2way")
 
 env.close()
+```
 
 ### Effect of co2 emission
 
@@ -812,7 +794,4 @@ Nox (50 km/h)
    </td>
   </tr>
 </table>
-
-
-Pressure co2:
 
