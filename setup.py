@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages 
 
 REQUIRED = ['gym', 'numpy', 'pandas', 'ray[rllib]']
 

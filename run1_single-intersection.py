@@ -1,7 +1,7 @@
 import argparse
 import os
 import sys
-from datetime import datetime
+from datetime import datetime 
 
 
 if 'SUMO_HOME' in os.environ:
