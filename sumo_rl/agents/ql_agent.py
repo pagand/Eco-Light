@@ -1,6 +1,6 @@
 import numpy as np
 
-from sumo_rl.exploration.epsilon_greedy import EpsilonGreedy
+from sumo_rl.exploration.epsilon_greedy import EpsilonGreedy 
 
 
 class QLAgent:

@@ -1,7 +1,7 @@
 import numpy as np
 from itertools import combinations, product
 
-from linear_rl.basis import Basis
+from linear_rl.basis import Basis 
 
 
 class FourierBasis(Basis):
