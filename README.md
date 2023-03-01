@@ -155,7 +155,7 @@ Reward profile         |
 
 
 
-<img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
+<img src="outputs/image8.gif" width="" alt="alt_text1" title="image_tooltip">
 
    </td>
   </tr>
