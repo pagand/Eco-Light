@@ -155,7 +155,7 @@ Reward profile         |
 
 
 
-<img src="outputs/image2.gif" width="" alt="alt_text" title="image_tooltip">
+<img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
 
    </td>
   </tr>
@@ -181,23 +181,15 @@ Reward profile         |
    </td>
   </tr>
   <tr>
-   <td>Queue length CO2 normalized weight
+   <td>Queue length
    </td>
-   <td>Queue length co2 not-normalized weight
+   <td>weighted Queue length
    </td>
   </tr>
   <tr>
    <td colspan="2" >
 
 
-<img src="outputs/image8.gif" width="" alt="alt_text" title="image_tooltip">
-
-   </td>
-  </tr>
-  <tr>
-   <td colspan="2" >Queue length type1
-   </td>
-  </tr>
 </table>
 
 
