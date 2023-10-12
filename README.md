@@ -199,6 +199,15 @@ Reward profile         |
 ### Cite:
 
 ```
+ @article{aganddeep,
+  title={Deep Reinforcement Learning-based Intelligent Traffic Signal Controls with Optimized CO2 emissions},
+  author={Agand, Pedram, Iskrov, Alexey and Mo Chen},
+  booktitle={2023 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  pages={},
+  year={2023},
+  organization={IEEE}
+  }
+
   @article{agandecolight,
   title={EcoLight: Reward Shaping in Deep Reinforcement Learning for Ergonomic Traffic Signal Control},
   author={Agand, Pedram and Iskrov, Alexey},
